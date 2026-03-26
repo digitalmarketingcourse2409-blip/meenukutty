@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Meenukutty ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+
+body{
+background:linear-gradient(-45deg,#ff758c,#ff7eb3,#ff9a9e,#fad0c4);
+background-size:400% 400%;
+animation:bgMove 12s ease infinite;
+overflow:hidden;
+color:#fff;
+}
+
+@keyframes bgMove{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+
+header{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+padding:20px;
+}
+
+h1{
+font-size:65px;
+font-family:'Great Vibes',cursive;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+0%{text-shadow:0 0 10px #fff,0 0 20px #ff4e8a}
+100%{text-shadow:0 0 40px #fff,0 0 80px #ff4e8a}
+}
+
+.subtitle{font-size:22px;margin-top:10px}
+
+.typing{margin-top:20px;font-size:20px;max-width:500px}
+
+/* Floating hearts */
+.heart{
+position:absolute;
+width:18px;height:18px;
+background:red;
+transform:rotate(45deg);
+animation:float 5s linear forwards;
+}
+.heart:before,.heart:after{
+content:'';
+position:absolute;
+width:18px;height:18px;
+background:red;
+border-radius:50%;
+}
+.heart:before{top:-9px}
+.heart:after{left:-9px}
+
+@keyframes float{
+0%{opacity:1;transform:translateY(0) scale(1) rotate(45deg)}
+100%{opacity:0;transform:translateY(-150px) scale(1.5) rotate(45deg)}
+}
+
+/* Sparkles */
+.spark{
+position:absolute;width:4px;height:4px;background:#fff;border-radius:50%;
+animation:spark 2s linear forwards;
+}
+@keyframes spark{
+0%{opacity:1}
+100%{opacity:0;transform:translateY(-80px)}
+}
+
+/* Firework */
+.fire{
+position:absolute;width:6px;height:6px;background:yellow;border-radius:50%;
+animation:boom 1s ease-out forwards;
+}
+@keyframes boom{
+0%{transform:scale(1);opacity:1}
+100%{transform:scale(30);opacity:0}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
+<source src="kathaipoma.mp3" type="audio/mpeg">
+</audio>
+
+<header>
+<h1>Happy Birthday Meenukutty ❤️</h1>
+<p class="subtitle">From Dinesh Kumar V 💖</p>
+<div class="typing" id="typing"></div>
+</header>
+
+<script>
+
+// Start music on first touch
+window.addEventListener('click',()=>{
+document.getElementById('bgMusic').play();
+},{once:true});
+
+// Typing message
+const msg="You are my today, tomorrow and forever ❤️";
+let i=0;
+function type(){
+if(i<msg.length){
+document.getElementById('typing').innerHTML+=msg.charAt(i);
+i++;
+setTimeout(type,40);
+}
+}
+type();
+
+// CLICK ANYWHERE EFFECT
+window.addEventListener('click',(e)=>{
+
+// HEART BURST
+for(let i=0;i<20;i++){
+let h=document.createElement('div');
+h.className='heart';
+h.style.left=e.clientX+'px';
+h.style.top=e.clientY+'px';
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),5000);
+}
+
+// SPARKLES
+for(let i=0;i<10;i++){
+let s=document.createElement('div');
+s.className='spark';
+s.style.left=e.clientX+'px';
+s.style.top=e.clientY+'px';
+document.body.appendChild(s);
+setTimeout(()=>s.remove(),2000);
+}
+
+// FIREWORK
+for(let i=0;i<10;i++){
+let f=document.createElement('div');
+f.className='fire';
+f.style.left=e.clientX+'px';
+f.style.top=e.clientY+'px';
+document.body.appendChild(f);
+setTimeout(()=>f.remove(),1000);
+}
+
+});
+
+</script>
+
+</body>
+</html>
